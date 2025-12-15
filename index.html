@@ -475,51 +475,6 @@
     </style>
 </head>
 <body>
-    <!-- ===== 可编辑链接工具栏 ===== -->
-<div id="link-bar">
-    <!-- 工具栏头部：显示和编辑切换 -->
-    <div class="link-bar-header">
-        <span>🔗 快捷链接</span>
-        <button id="toggle-edit-btn" title="编辑链接">✎</button>
-    </div>
-    
-    <!-- 链接展示区 -->
-    <div class="links-container" id="links-display">
-        <!-- 链接会在这里动态生成 -->
-    </div>
-    
-    <!-- 链接编辑区 (默认隐藏) -->
-    <div class="edit-container" id="links-edit" style="display: none;">
-        <textarea id="links-input" placeholder="在这里添加或编辑链接，格式为：
-名称1 | https://example.com
-名称2 | https://another.com
-每条链接占一行，名称和网址用“ | ”分隔。"></textarea>
-        <div class="edit-actions">
-            <button id="save-links-btn">💾 保存</button>
-            <button id="cancel-edit-btn">❌ 取消</button>
-            <button id="reset-links-btn" title="恢复默认">🔄 重置</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // 链接工具栏的核心逻辑
-    (function() {
-        // 存储键和默认链接
-        const STORAGE_KEY = 'yohayi_quick_links';
-        const DEFAULT_LINKS = [
-            { name: '几何字符串映射', url: 'https://github.com/yohayi/geometry-string-map' },
-            { name: '研究项目集', url: 'https://github.com/yohayi/2025-2026-' },
-            { name: 'B站主页', url: 'https://space.bilibili.com/1998115340' }
-            { name: ' 信技化生-技术交流网站', url: 'https://yohayi.github.io/-history/' },
-{ name: '“惊鸿斋”官方网站', url: 'https://yohayi.github.io/jinghongzhai--/' },
-{ name: '杭州市教育总结', url: 'https://yohayi.github.io/my-personal-edu-website/' },
-{ name: '教育数据与交流网站', url: 'https://yohayi.github.io/2026--/index.html' },
-{ name: '几何弦理论课后交流-网站', url: 'https://yohayi.github.io/geometry-string-map/' },
-{ name: 'BDCG游戏技术与美术素材网站', url: 'https://yohayi.github.io/BDCG---/' },
-{ name: '游海洋个人网站', url: 'https://yohayi.github.io/yohayi-/' },
-        ];
-        
     <!-- 头部导航 -->
     <header>
         <div class="container header-container">
@@ -731,7 +686,47 @@
                 description: "采用古法蓝染工艺处理封面，内页为手工宣纸，适合书写与绘画，是文艺爱好者的理想选择。",
                 image: "https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
                 link: "case-6.html"
-            }
+            },
+            {
+    id: 7,
+    title: "谭宫-望月系列",
+    category: "clothing",
+    description: "融合谭派戏曲元素与现代服装设计，以月亮为灵感主题的高级定制系列。",
+    image: "https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    link: "case-7.html"
+},
+{
+    id: 8,
+    title: "R1-101 解构主义实验",
+    category: "clothing",
+    description: "解构主义在服装设计中的实验性尝试，突破传统剪裁与结构限制。",
+    image: "https://images.unsplash.com/photo-1558769132-cb1c458e4222?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80",
+    link: "case-8.html"
+},
+{
+    id: 9,
+    title: "R-1-102 面料编织研究",
+    category: "textile",
+    description: "探索不同材质编织技巧，创造出独特纹理与视觉效果的面料实验。",
+    image: "https://images.unsplash.com/photo-1556048219-bb6978360b84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    link: "case-9.html"
+},
+{
+    id: 10,
+    title: "R-1-103 可持续设计",
+    category: "handmade",
+    description: "使用回收材料和环保工艺，探索时尚产业的可持续发展可能性。",
+    image: "https://images.unsplash.com/photo-1542327777-6ce406ea3ab8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    link: "case-10.html"
+},
+{
+    id: 11,
+    title: "R-1-104 数字印花探索",
+    category: "textile",
+    description: "结合数字技术与传统印花工艺，创造出复杂而精细的图案设计。",
+    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    link: "case-11.html"
+}
         ];
 
         // 类别映射
@@ -845,6 +840,7 @@
             
             // 添加到数据数组
             worksData.push(newCard);
+            
             
             // 重新渲染所有卡片
             renderCards(worksData);
