@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨染江南系列旗袍 - 惊鸿斋</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #A0522D;
+            --light-color: #FAF3E0;
+            --dark-color: #3C2F2F;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* 案例内容 */
+        .case-hero {
+            background: linear-gradient(rgba(60, 47, 47, 0.7), rgba(60, 47, 47, 0.7)), url('https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .case-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .case-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .case-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .case-section {
+            margin-bottom: 60px;
+        }
+        
+        .case-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .case-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .case-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .details-list {
+            list-style-type: none;
+        }
+        
+        .details-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+        
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 150px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 40px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-menu li {
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .case-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .case-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-list li {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-feather-alt"></i>
+                惊鸿斋
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#about">关于</a></li>
+                <li><a href="index.html#works">作品集</a></li>
+                <li><a href="index.html#sites">相关网站</a></li>
+                <li><a href="index.html#contact">联系</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 案例主图 -->
+    <section class="case-hero">
+        <div class="container">
+            <span class="case-category">服装设计</span>
+            <h1>墨染江南系列旗袍</h1>
+            <p>灵感来源于江南水墨画，传统与现代的完美融合</p>
+        </div>
+    </section>
+
+    <!-- 案例内容 -->
+    <section class="case-content">
+        <div class="container">
+            <a href="index.html#works" class="back-button">
+                <i class="fas fa-arrow-left"></i> 返回作品集
+            </a>
+            
+            <div class="case-section">
+                <h2>设计理念</h2>
+                <p>墨染江南系列旗袍的设计灵感来源于中国传统水墨画中的江南景致。设计师试图将水墨画中的"留白"意境和"墨分五色"的层次感融入到服装设计中，创造出既有东方神韵又符合现代审美的旗袍作品。</p>
+                <p>本系列强调"淡雅中见华贵，简约中藏细节"的设计哲学。通过精心设计的剪裁和面料选择，让穿着者在动静之间展现出如水墨画般流动的美感。</p>
+                
+                <div class="case-grid">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="墨染江南旗袍正面">
+                    </div>
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="墨染江南旗袍细节">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>制作工艺</h2>
+                <p>本系列旗袍采用多项传统与创新相结合的工艺：</p>
+                
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">面料选择：</span>
+                        <span>采用100%桑蚕丝提花面料，手感柔滑，光泽自然，透气性极佳。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">染色工艺：</span>
+                        <span>使用传统植物染结合现代渐变染色技术，创造出如水墨般自然的色彩过渡。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">刺绣工艺：</span>
+                        <span>领口和袖口采用苏绣工艺，绣有江南窗棂纹样，每一件都需要30小时以上的手工刺绣。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">剪裁技术：</span>
+                        <span>结合传统旗袍平面剪裁与现代立体剪裁，既保持传统旗袍的线条美，又提高穿着舒适度。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">盘扣设计：</span>
+                        <span>手工制作的兰花形盘扣，每一颗都需要2-3小时精心制作，成为整件旗袍的点睛之笔。</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="case-section">
+                <h2>设计细节分析</h2>
+                <p>墨染江南系列旗袍在设计上注重以下几个关键细节：</p>
+                
+                <div class="case-grid">
+                    <div>
+                        <h3>1. 色彩层次</h3>
+                        <p>从深灰到浅灰的渐变设计，模仿水墨在宣纸上的自然晕染效果，不同光线下呈现不同的色彩层次。</p>
+                    </div>
+                    <div>
+                        <h3>2. 纹样设计</h3>
+                        <p>提取江南园林中的窗棂、太湖石纹样，以抽象方式呈现在面料上，远看简约，近看丰富。</p>
+                    </div>
+                    <div>
+                        <h3>3. 结构创新</h3>
+                        <p>在传统旗袍侧开衩的基础上，加入隐蔽的褶裥设计，既保持端庄感，又增加活动自由度。</p>
+                    </div>
+                    <div>
+                        <h3>4. 配饰搭配</h3>
+                        <p>设计有配套的丝质披肩和手包，图案与旗袍呼应，形成完整的着装体系。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>项目记录</h2>
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">设计时间：</span>
+                        <span>2023年3月-5月（共3个月）</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">制作周期：</span>
+                        <span>每件旗袍需要40-50小时手工制作</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">材料成本：</span>
+                        <span>主要成本为桑蚕丝面料和手工刺绣，占总成本的65%</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">工艺难点：</span>
+                        <span>渐变染色的一致性控制，以及苏绣图案的精细度保持</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">客户反馈：</span>
+                        <span>已制作12件，客户满意度98%，主要赞赏其舒适度和独特设计</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>惊鸿斋</h3>
+                    <p>专注于传统与现代融合的服装设计与手作艺术，致力于传承与创新。</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 中国某市创意园区设计路123号
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#about">关于我们</a></li>
+                        <li><a href="index.html#works">作品集</a></li>
+                        <li><a href="index.html#sites">相关网站</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@jinghongzhai.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@jinghongzhai.com</a></li>
+                        <li><a href="tel:+861000000000"><i class="fas fa-phone" style="margin-right: 10px;"></i> +86 1000 000 000</a></li>
+                        <li><a href="#"><i class="fab fa-weixin" style="margin-right: 10px;"></i> 微信公众号</a></li>
+                        <li><a href="#"><i class="fab fa-weibo" style="margin-right: 10px;"></i> 新浪微博</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 惊鸿斋 服装设计与手作设计工作室. 保留所有权利.</p>
+                <p>本网站为静态演示网站，所有作品均为示意展示。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
