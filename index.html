@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惊鸿斋 - 服装设计与手作设计</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #A0522D;
+            --light-color: #FAF3E0;
+            --dark-color: #3C2F2F;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        /* 主图区域 */
+        .hero {
+            background: linear-gradient(rgba(60, 47, 47, 0.7), rgba(60, 47, 47, 0.7)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--light-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+        
+        /* 介绍区域 */
+        .intro {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 动态卡片区域 */
+        .works {
+            padding: 80px 0;
+            background-color: #f9f5f0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .card-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .card-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .card-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 相关网站区域 */
+        .external-sites {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .sites-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .site-card {
+            background-color: #f9f5f0;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .site-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .site-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .site-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .site-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .site-link i {
+            margin-left: 5px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 40px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex-basis: calc(50% - 20px);
+                margin-right: 20px;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-menu {
+                margin-top: 15px;
+            }
+            
+            .nav-menu li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+                margin-right: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-feather-alt"></i>
+                惊鸿斋
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#works">作品集</a></li>
+                <li><a href="#sites">相关网站</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 主图区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>惊鸿一瞥，匠心独运</h1>
+            <p>惊鸿斋专注于传统与现代融合的服装设计与手作艺术，每一件作品都凝聚着匠人的心血与灵感，展现独特美学与精湛工艺的完美结合。</p>
+            <a href="#works" class="cta-button">探索作品集</a>
+        </div>
+    </section>
+
+    <!-- 介绍区域 -->
+    <section class="intro" id="about">
+        <div class="container intro-content">
+            <div class="intro-text">
+                <h2>关于惊鸿斋</h2>
+                <p>惊鸿斋创立于2015年，致力于将传统手工艺与现代设计理念相结合，打造独一无二的服装与手作艺术品。我们的设计灵感来源于自然、传统文化和现代美学，每一件作品都讲述着一个独特的故事。</p>
+                <p>我们的团队由资深设计师和手工艺人组成，擅长运用天然面料、传统染色技术和现代剪裁手法，创造出既有文化底蕴又符合现代审美的作品。</p>
+                <p>惊鸿斋不仅是一个设计工作室，更是一个传承与创新的平台。我们定期举办工作坊，分享手作技艺，让更多人了解和体验手工艺的魅力。</p>
+            </div>
+            <div class="intro-image">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="惊鸿斋工作室">
+            </div>
+        </div>
+    </section>
+
+    <!-- 动态卡片区域 -->
+    <section class="works" id="works">
+        <div class="container">
+            <h2 class="section-title">作品集</h2>
+            
+            <!-- 筛选按钮 -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">全部作品</button>
+                <button class="filter-btn" data-filter="clothing">服装设计</button>
+                <button class="filter-btn" data-filter="handmade">手作设计</button>
+                <button class="filter-btn" data-filter="textile">面料艺术</button>
+                <button class="filter-btn" data-filter="accessory">配饰设计</button>
+            </div>
+            
+            <!-- 动态卡片容器 -->
+            <div class="cards-container" id="cardsContainer">
+                <!-- 卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 添加新卡片表单（用于演示，实际使用时可能需要在后台管理） -->
+            <div class="add-card-form" style="background-color: white; padding: 30px; border-radius: 10px; max-width: 800px; margin: 0 auto; box-shadow: var(--shadow);">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">添加新作品（演示功能）</h3>
+                <div class="form-row" style="display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <input type="text" id="newCardTitle" placeholder="作品标题" style="flex: 1; min-width: 200px; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+                    <select id="newCardCategory" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; background-color: white;">
+                        <option value="clothing">服装设计</option>
+                        <option value="handmade">手作设计</option>
+                        <option value="textile">面料艺术</option>
+                        <option value="accessory">配饰设计</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <textarea id="newCardDescription" placeholder="作品描述" rows="3" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button id="addCardBtn" class="cta-button" style="border: none; cursor: pointer;">添加演示卡片</button>
+                </div>
+                <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">注意：此功能仅用于演示，刷新页面后添加的卡片将消失。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关网站区域 -->
+    <section class="external-sites" id="sites">
+        <div class="container">
+            <h2 class="section-title">相关网站推荐</h2>
+            <div class="sites-container">
+                <div class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>设计灵感库</h3>
+                    <p>汇集全球服装设计灵感与趋势分析，帮助设计师捕捉创意火花。</p>
+                    <a href="https://www.pinterest.com" target="_blank" class="site-link">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>手作材料商城</h3>
+                    <p>提供高品质面料、辅料及手作工具，满足各类手工创作需求。</p>
+                    <a href="https://www.etsy.com" target="_blank" class="site-link">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>传统工艺档案</h3>
+                    <p>记录与传承世界各地传统手工艺技术，促进文化遗产保护。</p>
+                    <a href="https://www.craftscouncil.org.uk" target="_blank" class="site-link">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>设计师社区</h3>
+                    <p>全球设计师交流平台，分享作品、技巧与行业动态。</p>
+                    <a href="https://www.behance.net" target="_blank" class="site-link">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>惊鸿斋</h3>
+                    <p>专注于传统与现代融合的服装设计与手作艺术，致力于传承与创新。</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 中国某市创意园区设计路123号
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#works">作品集</a></li>
+                        <li><a href="#sites">相关网站</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@jinghongzhai.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@jinghongzhai.com</a></li>
+                        <li><a href="tel:+861000000000"><i class="fas fa-phone" style="margin-right: 10px;"></i> +86 1000 000 000</a></li>
+                        <li><a href="#"><i class="fab fa-weixin" style="margin-right: 10px;"></i> 微信公众号</a></li>
+                        <li><a href="#"><i class="fab fa-weibo" style="margin-right: 10px;"></i> 新浪微博</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 惊鸿斋 服装设计与手作设计工作室. 保留所有权利.</p>
+                <p>本网站为静态演示网站，所有作品均为示意展示。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 作品数据 - 在实际使用中，这些数据可以从外部JSON文件加载
+        const worksData = [
+            {
+                id: 1,
+                title: "墨染江南系列旗袍",
+                category: "clothing",
+                description: "灵感来源于江南水墨画，采用传统真丝面料与手工刺绣工艺，结合现代剪裁，展现东方女性优雅气质。",
+                image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                link: "case-1.html"
+            },
+            {
+                id: 2,
+                title: "禅意手作茶席套装",
+                category: "handmade",
+                description: "采用天然亚麻与手工植物染技艺，每一件茶具配件都是独一无二的艺术品，体现宁静致远的禅意美学。",
+                image: "https://images.unsplash.com/photo-1594736797933-dafaa7324b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                link: "case-2.html"
+            },
+            {
+                id: 3,
+                title: "草木染渐变围巾",
+                category: "textile",
+                description: "使用传统草木染技术，从植物中提取天然色素，创造出柔和渐变色彩，每一件作品都承载着自然的气息。",
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=658&q=80",
+                link: "case-3.html"
+            },
+            {
+                id: 4,
+                title: "竹编工艺手提包",
+                category: "accessory",
+                description: "结合传统竹编工艺与现代皮革配件，打造既环保又时尚的日常配饰，展现自然材质之美。",
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+                link: "case-4.html"
+            },
+            {
+                id: 5,
+                title: "云锦改良式礼服",
+                category: "clothing",
+                description: "将传统云锦工艺应用于现代礼服设计，保留云锦华丽质感的同时，融入西方剪裁技巧，打造中西合璧的高级定制。",
+                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
+                link: "case-5.html"
+            },
+            {
+                id: 6,
+                title: "蓝染手工笔记本",
+                category: "handmade",
+                description: "采用古法蓝染工艺处理封面，内页为手工宣纸，适合书写与绘画，是文艺爱好者的理想选择。",
+                image: "https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                link: "case-6.html"
+            }
+        ];
+
+        // 类别映射
+        const categoryMap = {
+            "clothing": "服装设计",
+            "handmade": "手作设计",
+            "textile": "面料艺术",
+            "accessory": "配饰设计"
+        };
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 渲染所有卡片
+            renderCards(worksData);
+            
+            // 筛选按钮事件
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 给当前按钮添加active类
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterCards(filter);
+                });
+            });
+            
+            // 添加卡片按钮事件
+            document.getElementById('addCardBtn').addEventListener('click', addNewCard);
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // 渲染卡片函数
+        function renderCards(cardsData) {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '';
+            
+            cardsData.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = `card ${card.category}`;
+                cardElement.setAttribute('data-category', card.category);
+                
+                cardElement.innerHTML = `
+                    <div class="card-image">
+                        <img src="${card.image}" alt="${card.title}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">${categoryMap[card.category]}</span>
+                        <h3 class="card-title">${card.title}</h3>
+                        <p class="card-description">${card.description}</p>
+                        <a href="${card.link}" class="card-link">查看详细分析 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                
+                container.appendChild(cardElement);
+            });
+        }
+
+        // 筛选卡片函数
+        function filterCards(filter) {
+            const allCards = document.querySelectorAll('.card');
+            
+            allCards.forEach(card => {
+                if(filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 添加新卡片函数（演示功能）
+        function addNewCard() {
+            const titleInput = document.getElementById('newCardTitle');
+            const categorySelect = document.getElementById('newCardCategory');
+            const descriptionInput = document.getElementById('newCardDescription');
+            
+            if(!titleInput.value.trim() || !descriptionInput.value.trim()) {
+                alert('请填写作品标题和描述');
+                return;
+            }
+            
+            // 创建新的作品对象
+            const newCard = {
+                id: worksData.length + 1,
+                title: titleInput.value,
+                category: categorySelect.value,
+                description: descriptionInput.value,
+                image: getRandomImageForCategory(categorySelect.value),
+                link: `case-${worksData.length + 1}.html`
+            };
+            
+            // 添加到数据数组
+            worksData.push(newCard);
+            
+            // 重新渲染所有卡片
+            renderCards(worksData);
+            
+            // 重置表单
+            titleInput.value = '';
+            descriptionInput.value = '';
+            
+            // 显示成功消息
+            alert('演示卡片已添加！注意：刷新页面后此卡片将消失。');
+        }
+
+        // 根据类别获取随机图片（演示用）
+        function getRandomImageForCategory(category) {
+            const imageMap = {
+                clothing: [
+                    'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80',
+                    'https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80'
+                ],
+                handmade: [
+                    'https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                    'https://images.unsplash.com/photo-1594736797933-dafaa7324b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+                ],
+                textile: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=658&q=80',
+                    'https://images.unsplash.com/photo-1586363104864-071cddc086ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+                ],
+                accessory: [
+                    'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
+                    'https://images.unsplash.com/photo-1590649887895-3d8f1b5a6d5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+                ]
+            };
+            
+            const images = imageMap[category] || imageMap.clothing;
+            return images[Math.floor(Math.random() * images.length)];
+        }
+    </script>
+</body>
+</html>
