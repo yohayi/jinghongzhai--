@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-1-102 面料编织研究 - 惊鸿斋</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #A0522D;
+            --light-color: #FAF3E0;
+            --dark-color: #3C2F2F;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* 案例内容 */
+        .case-hero {
+            background: linear-gradient(rgba(60, 47, 47, 0.7), rgba(60, 47, 47, 0.7)), url('https://images.unsplash.com/photo-1556048219-bb6978360b84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .case-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .case-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .case-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .case-section {
+            margin-bottom: 60px;
+        }
+        
+        .case-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .case-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .case-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .details-list {
+            list-style-type: none;
+        }
+        
+        .details-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+        
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 180px;
+        }
+        
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .technique-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f5f0;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .technique-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .technique-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .sample-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .sample-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .sample-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .sample-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .sample-caption {
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f5f0;
+            font-size: 0.9rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 40px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-menu li {
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .case-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .case-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .case-grid, .technique-grid, .sample-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-list li {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-feather-alt"></i>
+                惊鸿斋
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#about">关于</a></li>
+                <li><a href="index.html#works">作品集</a></li>
+                <li><a href="index.html#sites">相关网站</a></li>
+                <li><a href="index.html#contact">联系</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 案例主图 -->
+    <section class="case-hero">
+        <div class="container">
+            <span class="case-category">面料艺术</span>
+            <h1>R-1-102 面料编织研究</h1>
+            <p>探索不同材料的编织技巧，传统手工编织与机械编织的融合创新</p>
+        </div>
+    </section>
+
+    <!-- 案例内容 -->
+    <section class="case-content">
+        <div class="container">
+            <a href="index.html#works" class="back-button">
+                <i class="fas fa-arrow-left"></i> 返回作品集
+            </a>
+            
+            <div class="case-section">
+                <h2>研究概述</h2>
+                <p>R-1-102 面料编织研究项目是一个系统性的材料探索实验，旨在突破传统编织技术的局限，通过不同材料的组合与编织技法的创新，创造出具有独特纹理、质感和功能性的新型面料。</p>
+                <p>本研究历时9个月，涵盖了天然纤维、合成材料、金属丝线和回收材料的编织实验，探索了从传统手工编织到现代机械编织的完整技术谱系，最终形成了12种具有商业应用潜力的新型编织面料。</p>
+                
+                <div class="case-grid">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1556048219-bb6978360b84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="面料编织研究实验室">
+                    </div>
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="编织面料细节">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>研究材料</h2>
+                <p>本研究使用了四大类共28种不同材料进行编织实验：</p>
+                
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">天然纤维类：</span>
+                        <span>棉、亚麻、羊毛、丝绸、竹纤维、黄麻、剑麻、苎麻</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">合成材料类：</span>
+                        <span>聚酯纤维、尼龙、丙烯酸、氨纶、碳纤维、芳纶</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">特殊材料类：</span>
+                        <span>铜丝、不锈钢丝、记忆合金丝、光导纤维、热敏材料</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">回收材料类：</span>
+                        <span>回收塑料瓶纤维、旧衣物再生棉、渔网再生尼龙、工业废料纤维</span>
+                    </li>
+                </ul>
+                
+                <div class="sample-gallery">
+                    <div class="sample-item">
+                        <img src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="天然纤维样本">
+                        <div class="sample-caption">天然纤维</div>
+                    </div>
+                    <div class="sample-item">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="合成材料样本">
+                        <div class="sample-caption">合成材料</div>
+                    </div>
+                    <div class="sample-item">
+                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="金属丝线样本">
+                        <div class="sample-caption">金属丝线</div>
+                    </div>
+                    <div class="sample-item">
+                        <img src="https://images.unsplash.com/photo-1542327777-6ce406ea3ab8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="回收材料样本">
+                        <div class="sample-caption">回收材料</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>编织技法研究</h2>
+                
+                <div class="technique-grid">
+                    <div class="technique-item">
+                        <div class="technique-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3>传统手工编织</h3>
+                        <p>研究传统竹编、草编、针织等手工技法，提取其纹理特征和结构原理。</p>
+                    </div>
+                    <div class="technique-item">
+                        <div class="technique-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>机械编织优化</h3>
+                        <p>优化工业编织机参数，实现复杂结构和混合材料的机械化生产。</p>
+                    </div>
+                    <div class="technique-item">
+                        <div class="technique-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>多层复合编织</h3>
+                        <p>开发多层材料复合编织技术，实现功能分区和梯度性能。</p>
+                    </div>
+                    <div class="technique-item">
+                        <div class="technique-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3>不规则结构编织</h3>
+                        <p>探索非规律性编织结构，创造有机纹理和随机美感。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>研究成果</h2>
+                <p>通过系统研究，我们成功开发出12种具有应用价值的新型编织面料：</p>
+                
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">R-1-102A：</span>
+                        <span>竹棉混纺透气面料，结合竹纤维的凉爽和棉的柔软，适合夏季服装。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">R-1-102B：</span>
+                        <span>铜丝混编抗菌面料，铜离子自然抗菌，适合医疗和卫生用途。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">R-1-102C：</span>
+                        <span>记忆合金智能面料，能根据温度变化自动调整透气孔大小。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">R-1-102D：</span>
+                        <span>回收塑料瓶环保面料，3D立体编织结构，具有良好支撑性。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">R-1-102E：</span>
+                        <span>光导纤维夜光面料，能在黑暗中发出微光，适合安全服装。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">R-1-102F：</span>
+                        <span>碳纤维增强面料，轻盈而强度高，适合户外和运动装备。</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="case-section">
+                <h2>应用实例</h2>
+                <div class="case-grid">
+                    <div>
+                        <h3>服装设计应用</h3>
+                        <p>R-1-102A面料已应用于"清风"系列夏季女装，透气性比传统棉布提高35%。</p>
+                    </div>
+                    <div>
+                        <h3>家居纺织品</h3>
+                        <p>R-1-102B抗菌面料用于医院床品和酒店毛巾，减少细菌滋生85%。</p>
+                    </div>
+                    <div>
+                        <h3>智能穿戴设备</h3>
+                        <p>R-1-102C智能面料用于可穿戴设备表带，提高佩戴舒适度和透气性。</p>
+                    </div>
+                    <div>
+                        <h3>环保产品</h3>
+                        <p>R-1-102D环保面料用于制作环保袋和包装材料，减少塑料污染。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>项目记录</h2>
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">研究时间：</span>
+                        <span>2023年5月-2024年1月（共9个月）</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">研究团队：</span>
+                        <span>5名面料设计师，3名纺织工程师，2名材料科学家</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">实验数量：</span>
+                        <span>进行了326次编织实验，测试了158种材料组合</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">专利申请：</span>
+                        <span>申请了4项面料编织技术专利，2项已获得授权</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">合作伙伴：</span>
+                        <span>与东华大学纺织学院、浙江纺织研究院合作研究</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">商业转化：</span>
+                        <span>3种面料已实现商业化生产，年产量预计达20万米</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>惊鸿斋</h3>
+                    <p>专注于传统与现代融合的服装设计与手作艺术，致力于传承与创新。</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 中国某市创意园区设计路123号
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#about">关于我们</a></li>
+                        <li><a href="index.html#works">作品集</a></li>
+                        <li><a href="index.html#sites">相关网站</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@jinghongzhai.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@jinghongzhai.com</a></li>
+                        <li><a href="tel:+861000000000"><i class="fas fa-phone" style="margin-right: 10px;"></i> +86 1000 000 000</a></li>
+                        <li><a href="#"><i class="fab fa-weixin" style="margin-right: 10px;"></i> 微信公众号</a></li>
+                        <li><a href="#"><i class="fab fa-weibo" style="margin-right: 10px;"></i> 新浪微博</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 惊鸿斋 服装设计与手作设计工作室. 保留所有权利.</p>
+                <p>本网站为静态演示网站，所有作品均为示意展示。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
