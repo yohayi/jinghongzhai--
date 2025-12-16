@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-1-103 可持续设计 - 惊鸿斋</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #A0522D;
+            --light-color: #FAF3E0;
+            --dark-color: #3C2F2F;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* 案例内容 */
+        .case-hero {
+            background: linear-gradient(rgba(60, 47, 47, 0.7), rgba(60, 47, 47, 0.7)), url('https://images.unsplash.com/photo-1542327777-6ce406ea3ab8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .case-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .case-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .case-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .case-section {
+            margin-bottom: 60px;
+        }
+        
+        .case-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .case-section p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .case-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .case-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .details-list {
+            list-style-type: none;
+        }
+        
+        .details-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+        
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: var(--primary-color);
+            min-width: 180px;
+        }
+        
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .sustainability-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f5f0;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .sustainability-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .sustainability-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .eco-impact {
+            background-color: #f0f9f0;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .carbon-footprint {
+            background-color: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .footprint-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .metric-item {
+            text-align: center;
+            padding: 15px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: #f9f5f0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 40px;
+        }
+        
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-menu li {
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .case-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .case-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .footprint-metrics {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .case-grid, .sustainability-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-list li {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                margin-bottom: 5px;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-feather-alt"></i>
+                惊鸿斋
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#about">关于</a></li>
+                <li><a href="index.html#works">作品集</a></li>
+                <li><a href="index.html#sites">相关网站</a></li>
+                <li><a href="index.html#contact">联系</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 案例主图 -->
+    <section class="case-hero">
+        <div class="container">
+            <span class="case-category">可持续设计</span>
+            <h1>R-1-103 可持续设计实践</h1>
+            <p>探索回收材料与环保工艺，推动时尚产业的可持续发展</p>
+        </div>
+    </section>
+
+    <!-- 案例内容 -->
+    <section class="case-content">
+        <div class="container">
+            <a href="index.html#works" class="back-button">
+                <i class="fas fa-arrow-left"></i> 返回作品集
+            </a>
+            
+            <div class="case-section">
+                <h2>设计理念</h2>
+                <p>R-1-103 可持续设计项目旨在回应时尚产业对环境的负面影响，通过系统性的材料创新、工艺优化和生命周期管理，探索真正可持续的时尚设计路径。项目核心是"从摇篮到摇篮"的设计哲学，确保每个产品都能在生命周期结束后回归自然或进入新的生产循环。</p>
+                <p>我们不仅关注材料的环保性，还深入研究生产过程的能源消耗、水资源使用、碳排放等全方位环境影响，力求在美学、功能性和可持续性之间找到最佳平衡点。</p>
+                
+                <div class="case-grid">
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1542327777-6ce406ea3ab8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="可持续设计工作场景">
+                    </div>
+                    <div class="case-image">
+                        <img src="https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="回收材料处理">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>材料来源与处理</h2>
+                <p>本项目使用的所有材料均来自可追溯的可持续来源：</p>
+                
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">回收塑料瓶：</span>
+                        <span>与本地回收机构合作，收集PET塑料瓶，经清洗、粉碎、熔融、纺丝制成再生聚酯纤维。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">旧衣物再生：</span>
+                        <span>建立社区旧衣物回收点，分类处理后，通过机械或化学方法再生为纺织纤维。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">农业废料：</span>
+                        <span>利用菠萝叶、香蕉茎、咖啡渣等农业副产品，提取天然纤维或制成生物基材料。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">海洋塑料：</span>
+                        <span>与环保组织合作清理海岸线，回收海洋塑料垃圾，转化为纺织原料。</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">有机天然纤维：</span>
+                        <span>采购经有机认证的棉、麻、丝等天然纤维，确保种植过程无农药污染。</span>
+                    </li>
+                </ul>
+                
+                <div class="sustainability-grid">
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>材料回收率</h3>
+                        <p>92%的材料来自回收或可再生资源</p>
+                    </div>
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>节水工艺</h3>
+                        <p>相比传统工艺减少用水量65%</p>
+                    </div>
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>可生物降解</h3>
+                        <p>78%的材料可在自然条件下分解</p>
+                    </div>
+                    <div class="sustainability-item">
+                        <div class="sustainability-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>能源节约</h3>
+                        <p>生产过程减少能源消耗40%</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>环保工艺创新</h2>
+                
+                <div class="case-grid">
+                    <div>
+                        <h3>1. 无水染色技术</h3>
+                        <p>采用超临界二氧化碳染色技术，完全无需用水，染料利用率高达98%，无废水排放。</p>
+                    </div>
+                    <div>
+                        <h3>2. 天然染料提取</h3>
+                        <p>从植物、昆虫和矿物中提取天然色素，开发出32种稳定耐用的天然染料配方。</p>
+                    </div>
+                    <div>
+                        <h3>3. 低温整理工艺</h3>
+                        <p>优化面料后整理工序，将处理温度从150°C降低到80°C，节约能源60%。</p>
+                    </div>
+                    <div>
+                        <h3>4. 零废弃裁剪</h3>
+                        <p>使用智能排版软件优化版型，面料利用率从75%提高到95%，边角料用于制作配饰。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>碳足迹计算</h2>
+                
+                <div class="carbon-footprint">
+                    <h3>产品生命周期碳排放分析（以一件T恤为例）</h3>
+                    
+                    <div class="footprint-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">2.1kg</div>
+                            <div class="metric-label">传统T恤碳排放</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">0.8kg</div>
+                            <div class="metric-label">R-1-103 T恤碳排放</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">62%</div>
+                            <div class="metric-label">碳排放减少</div>
+                        </div>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>生产阶段</th>
+                                <th>传统工艺碳排放(kg CO₂)</th>
+                                <th>R-1-103工艺碳排放(kg CO₂)</th>
+                                <th>减少比例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>材料生产</td>
+                                <td>1.2</td>
+                                <td>0.3</td>
+                                <td>75%</td>
+                            </tr>
+                            <tr>
+                                <td>染色处理</td>
+                                <td>0.5</td>
+                                <td>0.1</td>
+                                <td>80%</td>
+                            </tr>
+                            <tr>
+                                <td>裁剪缝制</td>
+                                <td>0.2</td>
+                                <td>0.15</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>运输包装</td>
+                                <td>0.2</td>
+                                <td>0.1</td>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <td>使用维护</td>
+                                <td>0.3</td>
+                                <td>0.15</td>
+                                <td>50%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>可持续性评估</h2>
+                
+                <div class="eco-impact">
+                    <h3>环境效益总结</h3>
+                    <p>通过R-1-103可持续设计项目的实施，我们取得了显著的环境效益：</p>
+                    
+                    <ul class="details-list">
+                        <li>
+                            <span class="detail-label">水资源节约：</span>
+                            <span>相比传统服装生产，每件产品平均节约用水210升</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">废弃物减少：</span>
+                            <span>生产过程中的废弃物减少85%，边角料100%回收利用</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">化学污染降低：</span>
+                            <span>完全避免使用重金属染料和有毒整理剂，化学污染降低95%</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">能源效率提升：</span>
+                            <span>整体能源消耗降低40%，其中染色工序能源消耗降低70%</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">碳减排成果：</span>
+                            <span>每生产1000件服装，可减少二氧化碳排放1.3吨</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>设计成果</h2>
+                <p>基于可持续设计理念，我们开发了"回归自然"系列产品：</p>
+                
+                <div class="case-grid">
+                    <div>
+                        <h3>再生系列服装</h3>
+                        <p>使用100%回收塑料瓶纤维制作的日常服装，包括T恤、裤装和外套。</p>
+                    </div>
+                    <div>
+                        <h3>天然染色家纺</h3>
+                        <p>采用有机棉和天然染料制作的床品、毛巾等家居纺织品。</p>
+                    </div>
+                    <div>
+                        <h3>可降解配饰</h3>
+                        <p>使用菌丝体、海藻等生物基材料制作的可完全降解配饰。</p>
+                    </div>
+                    <div>
+                        <h3>模块化设计</h3>
+                        <p>可拆卸、可修复、可升级的模块化服装，延长产品使用寿命。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-section">
+                <h2>项目记录</h2>
+                <ul class="details-list">
+                    <li>
+                        <span class="detail-label">项目周期：</span>
+                        <span>2023年6月-2024年3月（共10个月）</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">研究投入：</span>
+                        <span>投入研发资金85万元，其中45%用于环保工艺开发</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">材料回收：</span>
+                        <span>累计回收塑料瓶12万个，旧衣物3.5吨，减少垃圾填埋量8.2吨</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">认证获得：</span>
+                        <span>获得GOTS有机认证、GRS回收材料认证和OEKO-TEX环保认证</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">合作伙伴：</span>
+                        <span>与环保组织"绿色地球"、"零废弃联盟"建立长期合作</span>
+                    </li>
+                    <li>
+                        <span class="detail-label">社会影响：</span>
+                        <span>项目成果在3所设计院校推广，影响超过500名设计师和学生</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>惊鸿斋</h3>
+                    <p>专注于传统与现代融合的服装设计与手作艺术，致力于传承与创新。</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 中国某市创意园区设计路123号
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#about">关于我们</a></li>
+                        <li><a href="index.html#works">作品集</a></li>
+                        <li><a href="index.html#sites">相关网站</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@jinghongzhai.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@jinghongzhai.com</a></li>
+                        <li><a href="tel:+861000000000"><i class="fas fa-phone" style="margin-right: 10px;"></i> +86 1000 000 000</a></li>
+                        <li><a href="#"><i class="fab fa-weixin" style="margin-right: 10px;"></i> 微信公众号</a></li>
+                        <li><a href="#"><i class="fab fa-weibo" style="margin-right: 10px;"></i> 新浪微博</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 惊鸿斋 服装设计与手作设计工作室. 保留所有权利.</p>
+                <p>本网站为静态演示网站，所有作品均为示意展示。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
